@@ -1,33 +1,60 @@
-import React, { Component } from 'react';
-import './App.css';
-import axios from 'axios'; //AXIOS INSTALLED!!
+import React, { useEffect, useState } from "react";
+//everything inside the {} are named exports from the
+//module/library
+//React is the exports in 1 whole object
+import "./App.css";
+import Header from "./components/Header";
+import axios from "axios"; //AXIOS INSTALLED!!
 
 function App() {
+  const [searchParam, setSearchParam] = useState("");
+  const [category, setCategory] = useState("story");
+  const [date, setDate] = useState("");
 
-  render() 
-    const { state, handleChange, handleSubmit, selectHandleChange } = this.props
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('submitted!')
+    console.log("searchParam:", searchParam)
+    console.log("category:", category)
+    console.log("date:",date)
+    if(category === "date"){
+      console.log('fetch data with this date:', date)
+    }
+    if(category=== 'author'){
+      console.log('fetch data with this author:', searchParam)
+    }
+    if(category=== 'tag'){
+      console.log('fetch data with this tag:', searchParam)
+    }
+  }
+
+  // useEffect(()=>{
+  //   console.log("searchParam:", searchParam)
+  // }, [searchParam ])
+
+  // useEffect(()=>{
+  //   console.log("category:", category)
+  // }, [category ])
+
+  // useEffect(()=>{
+  //   console.log("date:",date)
+  // }, [date])
+
   return (
     <div>
-    <form className="label" onKeyUp={handleSubmit}>
-      <label>
-        <input
-          placeholder="HACKATHON!!" type="text" value={state.input} onChange={handleChange}/>
-      </label>
-      <input type="submit" value="Submit" id="btn" />
-    </form>
-
-    <label className="label" for="articles" id="search-by">
-      Search By:{" "}
-    </label>
-    <select onChange={selectHandleChange} name="articles" id="articles">
-      <option value="title">Title</option>
-      <option value="tag">Tag</option>
-      <option value="author">Author</option>
-      <option value="creation-date">Date Created</option>
-    </select>
-  </div>
+      <Header
+        searchParam={searchParam}
+        category={category}
+        date={date}
+        setCategory={setCategory}
+        setSearchParam={setSearchParam}
+        setDate={setDate}
+        handleSubmit={handleSubmit}
+        //these above (in sky blue) are all properties/props and they are helping us to manage state from 
+        //parent to child component
+      />
+    </div>
   );
-  
 }
 
 export default App;
