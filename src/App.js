@@ -10,6 +10,7 @@ function App() {
   const [searchParam, setSearchParam] = useState("");
   const [category, setCategory] = useState("story");
   const [date, setDate] = useState("");
+  const [story, setStories] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -32,6 +33,12 @@ function App() {
   //   console.log("searchParam:", searchParam)
   // }, [searchParam ])
 
+  useEffect(() => {
+    fetch(`http://hn.algolia.com/api/v1/search?query= ${searchParam}`)
+      .then((res) => res.json())
+      .then((data) => {
+      })
+    })
   // useEffect(()=>{
   //   console.log("category:", category)
   // }, [category ])

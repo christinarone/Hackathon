@@ -30,7 +30,7 @@ const Header = (props) => {
             <form className="label" onSubmit={handleSubmit} style={{display:'flex', flexDirection:"column"}}>
                 <label>
                     <input
-                        placeholder="HACKATHON!!"
+                        placeholder="HACKATHON!!!"
                         type="text"
                         value={searchParam}
                         onChange={handleChange}
